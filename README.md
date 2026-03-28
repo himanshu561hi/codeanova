@@ -266,19 +266,23 @@ CODE-A-NOVA/
 
 <h3 style="color:#3b82f6;">1. Clone and Install Dependencies</h3>
 ```bash
-git clone https://github.com/username/code-a-nova.git
-cd code-a-nova
+git clone https://github.com/himanshu561hi/codeanova.git
+cd codeanova
+```
 
-# Install Backend Dependencies
+<h3 style="color:#3b82f6;">2. Backend Setup</h3>
+```bash
 cd backend
 npm install
+```
 
-# Install Frontend Dependencies
+<h3 style="color:#3b82f6;">3. Frontend Setup</h3>
+```bash
 cd ../frontend
 npm install
 ```
 
-<h3 style="color:#3b82f6;">2. Environment Setup</h3>
+<h3 style="color:#3b82f6;">4. Environment Setup</h3>
 
 <p>Create a <b>.env</b> file in the <code>backend/</code> directory:</p>
 
@@ -299,7 +303,7 @@ CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-<h3 style="color:#3b82f6;">3. Run the Application</h3>
+<h3 style="color:#3b82f6;">5. Run the Application</h3>
 
 ```bash
 # In backend directory
