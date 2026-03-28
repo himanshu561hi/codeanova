@@ -34,7 +34,7 @@ processing security deposit payments, and instantly generating verified professi
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/username/repo/main/screenshots/architecture_overview.png" alt="System Architecture" width="100%">
+  <img src="./system_architecture.svg" alt="System Architecture" width="100%">
 </p>
 
 <p><b>A student can use Code a Nova to:</b></p>
