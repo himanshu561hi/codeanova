@@ -204,21 +204,59 @@ Certificate verification via unique Certificate ID, on-demand PDF generation.
 <pre>
 CODE-A-NOVA/
 ├── backend/
-│   ├── config/             # Database, Google API, Cloudinary configs
-│   ├── controllers/        # Business logic for auth, admin, students, projects
-│   ├── middleware/         # JWT and Role-based auth middleware
-│   ├── models/             # Mongoose schemas (User, Project, Broadcast, etc.)
+│   ├── config/             # Configuration files
+│   │   ├── cloudinary.js   # Cloudinary setup
+│   │   ├── db.js           # MongoDB connection
+│   │   └── googleSlides.js # Google API setup
+│   ├── controllers/        # Business logic
+│   │   ├── adminController.js
+│   │   ├── authController.js
+│   │   ├── broadcastController.js
+│   │   ├── projectController.js
+│   │   ├── publicController.js
+│   │   └── studentController.js
+│   ├── middleware/         # Security & Auth middlewares
+│   │   ├── authMiddleware.js
+│   ├── models/             # Mongoose schemas
+│   │   ├── AdminProject.js
+│   │   ├── Broadcast.js
+│   │   ├── Certificate.js
+│   │   ├── Project.js
+│   │   └── User.js
 │   ├── routes/             # API route definitions
-│   ├── utils/              # Email service, Google Slides logic, Cron jobs
-│   └── server.js           # Entry point
+│   │   ├── adminRoutes.js
+│   │   ├── authRoutes.js
+│   │   ├── broadcastRoutes.js
+│   │   ├── projectRoutes.js
+│   │   ├── publicRoutes.js
+│   │   └── studentRoutes.js
+│   ├── utils/              # Helper services
+│   │   ├── cronService.js   # Automated reminders
+│   │   ├── emailService.js  # SMTP logic
+│   │   ├── googleSlides.js  # Doc generation logic
+│   │   └── pdfGenerator.js  # PDF utility
+│   └── server.js           # Server entry point
 ├── frontend/
 │   ├── public/             # Static assets
 │   ├── src/
-│   │   ├── components/     # UI components (Navbar, Footer, ProtectedRoutes)
+│   │   ├── components/     # Reusable UI components
+│   │   │   ├── ConfirmModal.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   └── Navbar.jsx
 │   │   ├── pages/          # Full-page views
+│   │   │   ├── AdminLogin.jsx
+│   │   │   ├── AdminPanel.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── StudentDashboard.jsx
+│   │   │   ├── StudentLogin.jsx
+│   │   │   ├── SubmitProject.jsx
+│   │   │   └── VerifyCertificate.jsx
 │   │   ├── App.jsx         # Main router
-│   │   └── config.js       # Base API configuration
+│   │   ├── config.js       # Base API configuration
+│   │   └── main.jsx        # Entry point
 │   └── vite.config.js
+├── system_architecture.svg # Architecture diagram
 └── README.md
 </pre>
 
