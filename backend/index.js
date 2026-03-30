@@ -44,6 +44,15 @@ app.use('/api/broadcast', broadcastRoutes);
 app.use('/api/public', publicRoutes);
 app.get('/api/ping', (req, res) => res.json({ status: 'alive' }));
 
+// Root Route
+app.get('/', (req, res) => {
+  res.json({
+    message: "Welcome to Code a Nova API",
+    status: "Running",
+    vercel: true
+  });
+});
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
