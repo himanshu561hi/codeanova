@@ -21,7 +21,12 @@ app.use((req, res, next) => {
   const start = Date.now();
   res.on('finish', () => {
     const duration = Date.now() - start;
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} ${res.statusCode} - ${duration}ms`);
+    const logMessage = `[${new Date().toISOString()}] ${req.method} ${req.url} ${res.statusCode} - ${duration}ms`;
+    if (res.statusCode >= 400) {
+      console.warn(logMessage);
+    } else {
+      console.log(logMessage);
+    }
   });
   next();
 });
@@ -38,6 +43,22 @@ app.use('/api/student', studentRoutes);
 app.use('/api/broadcast', broadcastRoutes);
 app.use('/api/public', publicRoutes);
 app.get('/api/ping', (req, res) => res.json({ status: 'alive' }));
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  
+  // Log the complete error for Vercel Console
+  console.error(`[ERROR] [${new Date().toISOString()}] ${req.method} ${req.url}`);
+  console.error(`Message: ${err.message}`);
+  console.error(`Stack: ${err.stack}`);
+
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || 'Internal Server Error',
+    // stack: process.env.NODE_ENV === 'development' ? err.stack : undefined, // Useful if the user wants stack in dev
+  });
+});
 
 const PORT = process.env.PORT || 5005;
 app.listen(PORT, '0.0.0.0', () => {
